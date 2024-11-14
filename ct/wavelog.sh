@@ -76,7 +76,7 @@ if [[ ! -f /opt/${APP}_version.txt ]] || [[ "${RELEASE}" != "$(cat /opt/${APP}_v
   msg_ok "Updated ${APP}"
 
   msg_info "Starting Services"
-  systemctl start wavelog
+  systemctl start apache2
   msg_ok "Started Services"
 
   msg_info "Cleaning Up"
