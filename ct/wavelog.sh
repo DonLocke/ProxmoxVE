@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source <(curl -s https://raw.githubusercontent.com/DonLocke/ProxmoxVE/main/misc/build.func)
+source <(curl -s https://raw.githubusercontent.com/DonLocke/ProxmoxVE/add-wavelog-script-testing/misc/build.func)
 # Copyright (c) 2021-2024 tteck
 # Author: Don Locke (DonLocke)
 # License: MIT
