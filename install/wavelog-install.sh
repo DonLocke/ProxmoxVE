@@ -16,9 +16,10 @@ update_os
 
 msg_info "Installing Dependencies"
 $STD apt-get install -y \
-  php8.2-{curl,mbstring,mysql,xml,zip} \
+  curl \
   libapache2-mod-php \
-  mariadb-server
+  mariadb-server \
+  php8.2-{curl,mbstring,mysql,xml,zip}
 msg_ok "Installed Dependencies"
 
 msg_info "Setting up Database"
