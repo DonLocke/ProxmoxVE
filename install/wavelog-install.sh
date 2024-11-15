@@ -19,7 +19,8 @@ $STD apt-get install -y \
   curl \
   libapache2-mod-php \
   mariadb-server \
-  php8.2-{curl,mbstring,mysql,xml,zip}
+  php8.2-{curl,mbstring,mysql,xml,zip} \
+  unzip
 msg_ok "Installed Dependencies"
 
 msg_info "Setting up Database"
