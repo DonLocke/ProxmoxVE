@@ -54,7 +54,7 @@ rm -rf wavelog-${RELEASE}
 chown -R www-data:www-data /opt/wavelog/
 find /opt/wavelog/ -type d -exec chmod 755 {} \;
 find /opt/wavelog/ -type f -exec chmod 664 {} \;
-echo "${RELEASE}" >/opt/${APP}_version.txt
+echo "${RELEASE}" >/opt/${APPLICATION}_version.txt
 msg_ok "Installed Wavelog"
 
 msg_info "Creating Service"
