@@ -47,6 +47,7 @@ if [[ ${prompt,,} =~ ^(y|yes)$ ]]; then
     sed -i "s/;host/host/" /etc/allmon3/allmon3.ini
     sed -i "s/;user/user/" /etc/allmon3/allmon3.ini
     sed -i "s/;pass=.*/pass=$(sed -ne 's/^secret = //p' /etc/asterisk/manager.conf)/" /etc/allmon3/allmon3.ini
+    systemctl restart allmon3
     msg_ok "Configured Allmon3"
   fi
 fi
