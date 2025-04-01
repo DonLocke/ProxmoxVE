@@ -15,7 +15,7 @@ update_os
 
 msg_info "Adding ASL Package Repository"
 wget -q -P /tmp https://repo.allstarlink.org/public/asl-apt-repos.deb12_all.deb
-dpkg -i /tmp/asl-apt-repos.deb12_all.deb
+$STD dpkg -i /tmp/asl-apt-repos.deb12_all.deb
 $STD apt-get update
 msg_ok "Added ASL Package Repository"
 
@@ -25,7 +25,7 @@ msg_ok "Installed AllStarLink"
 
 msg_info "Configuring AllStarLink"
 SERVER_PASS=$(openssl rand -base64 18 | tr -dc 'a-zA-Z0-9' | head -c13)
-sed -i "/secret /s= .*/= $SERVER_PASS/" /etc/asterisk/manager.conf
+sed -i "/secret /s/= .*/= $SERVER_PASS/" /etc/asterisk/manager.conf
 msg_ok "Configured AllStarLink"
 
 read -r -p "Would you like to set up AllStarLink Node now? <y/N> " prompt
