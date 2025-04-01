@@ -24,8 +24,7 @@ $STD apt-get install -y asl3
 msg_ok "Installed AllStarLink"
 
 msg_info "Configuring AllStarLink"
-SERVER_PASS=$(openssl rand -base64 18 | tr -dc 'a-zA-Z0-9' | head -c13)
-sed -i "/secret /s/= .*/= $SERVER_PASS/" /etc/asterisk/manager.conf
+sed -i "/secret /s/= .*/= $(openssl rand -base64 18 | tr -dc 'a-zA-Z0-9' | head -c13)/" /etc/asterisk/manager.conf
 msg_ok "Configured AllStarLink"
 
 read -r -p "Would you like to set up AllStarLink Node now? <y/N> " prompt
@@ -44,10 +43,10 @@ if [[ ${prompt,,} =~ ^(y|yes)$ ]]; then
   NODE=$(grep -oP '^\[\d+\]\(node-main\)' /etc/asterisk/rpt.conf | grep -oP '\d+')
   if [[ -n $NODE ]]; then
     msg_info "Configuring Allmon3"
-    sed -i "s/;[1999]/[$NODE]/" /etc/allmon3/allmon3.ini
+    sed -i "s/;\[1999\]/\[$NODE\]/" /etc/allmon3/allmon3.ini
     sed -i "s/;host/host/" /etc/allmon3/allmon3.ini
     sed -i "s/;user/user/" /etc/allmon3/allmon3.ini
-    sed -i "s/;pass=.*/pass=$SERVER_PASS" /etc/allmon3/allmon3.ini
+    sed -i "s/;pass=.*/pass=$(sed -ne 's/^secret = //p' /etc/asterisk/manager.conf)" /etc/allmon3/allmon3.ini
     msg_ok "Configured Allmon3"
   fi
 fi
